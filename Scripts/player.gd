@@ -3,6 +3,10 @@ extends CharacterBody2D
 const SPEED = 120.0
 const JUMP_VELOCITY = -300.0
 var can_jump = true
+
+#https://youtu.be/ai331P2U1pE?si=JMlwshy2V6oSa96C
+@export var player_id = 1
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer: Timer = $CoyoteTimer
 
@@ -22,7 +26,7 @@ func _physics_process(delta: float) -> void:
 		can_jump = true
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and can_jump:
+	if Input.is_action_just_pressed("jump_%s" % [player_id]) and can_jump:
 		velocity.y = JUMP_VELOCITY
 		can_jump = false
 		
@@ -32,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Obtiene la dirección del input: 0 si no hay ningun input
 	# 1: derecha, -1: izquierda
-	var direction := Input.get_axis("move_left", "move_right")
+	var direction := Input.get_axis("move_left_%s" % [player_id], "move_right_%s" % [player_id])
 	#Aplica el movimiento
 	if direction:
 		velocity.x = direction * SPEED

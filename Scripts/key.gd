@@ -6,13 +6,13 @@ var key_taken = false
 var in_chest_area = false
 var player_pos = 0
 
-signal chest_opened
+signal chest_opened (player_id: int)
 
 func _process(delta: float) -> void:
 	if (key_taken):
 		if (in_chest_area):
 			print ("Cofre abierto")
-			emit_signal("chest_opened")
+			emit_signal("chest_opened", player.player_id)
 			queue_free()
 		
 		player_pos = player.get_global_position()
@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	
 #https://www.youtube.com/watch?v=tN76BJ2XyDQ
 func _on_body_entered(body: CharacterBody2D) -> void:
-	print (body.get_groups())
+	#print (body.get_groups())
 	if key_taken == false && body.is_in_group("Players"):
 		key_taken = true
 		player = get_node(body.get_path())
