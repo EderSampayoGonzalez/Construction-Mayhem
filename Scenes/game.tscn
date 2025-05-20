@@ -1,9 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://xs6v8ube4c8y"]
+[gd_scene load_steps=4 format=3 uid="uid://xs6v8ube4c8y"]
 
 [ext_resource type="PackedScene" uid="uid://b54p46keix0qh" path="res://Scenes/game_level.tscn" id="1_qxrlw"]
+[ext_resource type="Script" uid="uid://cat308o72ln1e" path="res://Scripts/Global.gd" id="2_qxrlw"]
+
+[sub_resource type="GDScript" id="GDScript_qxrlw"]
+resource_name = "score"
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	self.text = \"Jugador 1: %d\\n jugador2: %d\" % [Global.player_scores[0], Global.player_scores[1]]
+	pass
+"
 
 [node name="Main" type="Node2D"]
 
 [node name="Game_scenes" type="Node" parent="."]
 
 [node name="game_level" parent="Game_scenes" instance=ExtResource("1_qxrlw")]
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("2_qxrlw")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = SubResource("GDScript_qxrlw")

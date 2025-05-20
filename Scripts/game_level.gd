@@ -14,8 +14,9 @@ func _process(delta: float) -> void:
 
 
 func _on_key_chest_opened(player_id: int) -> void:
-	print ("AAAAAAAAAAAAAAAAAAAAAAA")
-	swap_level() # Replace with function body.
+	pass
+	#print ("AAAAAAAAAAAAAAAAAAAAAAA")
+	#swap_level() # Replace with function body.
 	
 func swap_level():
 	get_parent().add_child(TestScreen)

@@ -1,16 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck0riba1w3ixc"]
+[gd_scene load_steps=3 format=3 uid="uid://ck0riba1w3ixc"]
 
-[ext_resource type="Script" uid="uid://cj0soo1ay6n2q" path="res://Scripts/keychestpair.gd" id="1_vykkd"]
 [ext_resource type="PackedScene" uid="uid://dkmosrbmlpgxa" path="res://Scenes/key.tscn" id="1_xhbyl"]
 [ext_resource type="PackedScene" uid="uid://fk66gouiss70" path="res://Scenes/Chest.tscn" id="2_vykkd"]
 
 [node name="keychestpair" type="Node2D"]
-script = ExtResource("1_vykkd")
 
 [node name="Key" parent="." instance=ExtResource("1_xhbyl")]
 
 [node name="Chest" parent="." instance=ExtResource("2_vykkd")]
 position = Vector2(23, -3)
+
+[connection signal="body_entered" from="Chest" to="Key" method="_on_chest_body_entered"]
+[connection signal="body_exited" from="Chest" to="Key" method="_on_chest_body_exited"]
 
 [editable path="Key"]
 [editable path="Chest"]

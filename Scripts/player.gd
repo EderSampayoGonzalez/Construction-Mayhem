@@ -5,13 +5,14 @@ const JUMP_VELOCITY = -300.0
 var can_jump = true
 
 #https://youtu.be/ai331P2U1pE?si=JMlwshy2V6oSa96C
-@export var player_id = 1
+@export var player_id: int
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer: Timer = $CoyoteTimer
 
 func _ready() -> void:
 	add_to_group("Players")
+	Global.add_player(self.player_id)
 
 func _on_coyote_timer_timeout() -> void:
 	can_jump = false
@@ -51,14 +52,14 @@ func _physics_process(delta: float) -> void:
 	
 	#activa las animaciones
 	if not has_node("CollisionShape2D"):
-		animated_sprite.play("Dead")
+		animated_sprite.play("Dead_%s" % [player_id])
 	elif is_on_floor():
 		if direction == 0:
-			animated_sprite.play("Idle")
+			animated_sprite.play("Idle_%s" % [player_id])
 		else:
-			animated_sprite.play("Run")
+			animated_sprite.play("Run_%s" % [player_id])
 	else:
-		animated_sprite.play("Falling")
+		animated_sprite.play("Falling_%s" % [player_id])
 		
 	
 	move_and_slide()
