@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 [node name="game_level" parent="Game_scenes" instance=ExtResource("1_qxrlw")]
 
 [node name="turbine" parent="Game_scenes/game_level" instance=ExtResource("4_oleys")]
-position = Vector2(-33, 71)
+position = Vector2(-32, 73)
 
 [node name="Block" parent="Game_scenes/game_level" instance=ExtResource("3_3dryh")]
 position = Vector2(-113, 51)

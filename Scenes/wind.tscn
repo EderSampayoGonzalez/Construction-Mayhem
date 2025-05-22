@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://di81n38x6bejw"]
 
 [ext_resource type="Script" uid="uid://buutm7tw57j0m" path="res://Scripts/wind.gd" id="1_43i0t"]
-[ext_resource type="Texture2D" uid="uid://bux7p41rt0frq" path="res://Assets/Tiles/Transparent/tile_0020.png" id="1_gc4i6"]
+[ext_resource type="Texture2D" uid="uid://55w1tx222jro" path="res://Assets/Tiles/Transparent/tile_0119.png" id="2_43i0t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yaoqa"]
-size = Vector2(30, 55)
+size = Vector2(30, 60)
 
 [node name="wind" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_43i0t")
 
 [node name="wind_collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -35.5)
+position = Vector2(0, -38)
 shape = SubResource("RectangleShape2D_yaoqa")
 debug_color = Color(0, 0.635984, 0.410528, 0.42)
 
@@ -19,12 +19,14 @@ debug_color = Color(0, 0.635984, 0.410528, 0.42)
 position = Vector2(0, 27.5)
 rotation = -1.5708
 amount = 10
-texture = ExtResource("1_gc4i6")
-lifetime = 2.0
+texture = ExtResource("2_43i0t")
+lifetime = 1.7
+speed_scale = 2.0
 emission_shape = 3
 emission_rect_extents = Vector2(0, 10)
-gravity = Vector2(0, -24)
-initial_velocity_min = 2.0
-initial_velocity_max = 5.0
-scale_amount_min = 0.1
-scale_amount_max = 0.3
+particle_flag_align_y = true
+gravity = Vector2(0, -30)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_min = 0.3
+scale_amount_max = 0.5

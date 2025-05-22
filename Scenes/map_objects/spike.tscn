@@ -1,22 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://chv0mhdpjlwr6"]
+[gd_scene load_steps=5 format=3 uid="uid://boro3hlgwmxn1"]
 
-[ext_resource type="PackedScene" uid="uid://c80vcu717qoq7" path="res://Scenes/map_items/entity.tscn" id="1_ay2vc"]
 [ext_resource type="Texture2D" uid="uid://ci50f7tb40fc7" path="res://Assets/Tiles/Transparent/tile_0183.png" id="2_601st"]
 [ext_resource type="PackedScene" uid="uid://cs33gmubkm2pr" path="res://Scenes/killzone.tscn" id="3_jpv6p"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fl0e"]
-size = Vector2(12, 6)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_px17r"]
+points = PackedVector2Array(10, 1, 8, -1, -8, -1, -10, 1)
 
-[node name="Spike" instance=ExtResource("1_ay2vc")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ay2vc"]
+size = Vector2(10, 4.75)
 
-[node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0, 5)
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_mask = 3
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("ConvexPolygonShape2D_px17r")
+
+[node name="Killzone" parent="." instance=ExtResource("3_jpv6p")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 5.625)
+shape = SubResource("RectangleShape2D_ay2vc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.1875, 1.125)
 texture = ExtResource("2_601st")
-
-[node name="Killzone" parent="." index="2" instance=ExtResource("3_jpv6p")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" index="1"]
-position = Vector2(0, 5)
-shape = SubResource("RectangleShape2D_2fl0e")

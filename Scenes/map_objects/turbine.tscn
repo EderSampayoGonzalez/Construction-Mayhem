@@ -5,14 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://di81n38x6bejw" path="res://Scenes/wind.tscn" id="3_y65fu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gax8"]
-size = Vector2(30, 15)
+size = Vector2(30, 13)
 
 [node name="Area2D" type="StaticBody2D"]
 collision_mask = 3
 script = ExtResource("1_cusn3")
 
 [node name="turbine_collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_8gax8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -22,6 +22,7 @@ region_enabled = true
 region_rect = Rect2(112, 288, 32, 32)
 
 [node name="wind" parent="." instance=ExtResource("3_y65fu")]
+position = Vector2(0, 2)
 collision_mask = 3
 
 [node name="Timer" type="Timer" parent="."]

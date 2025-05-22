@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://q3pebhc2b5fw"]
+
+[ext_resource type="Script" uid="uid://dl46f7vthv1q5" path="res://enemy_1.gd" id="1_b4fmk"]
+[ext_resource type="Texture2D" uid="uid://c7rqoddkds28d" path="res://Assets/Tilemap/monochrome_tilemap_transparent_packed.png" id="2_oi0fj"]
+[ext_resource type="PackedScene" uid="uid://cs33gmubkm2pr" path="res://Scenes/killzone.tscn" id="3_n2eyf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lxrq"]
+size = Vector2(6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh3rd"]
+atlas = ExtResource("2_oi0fj")
+region = Rect2(16, 272, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5itg"]
+atlas = ExtResource("2_oi0fj")
+region = Rect2(32, 272, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r463f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh3rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5itg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b4fmk"]
+radius = 4.0
+
+[node name="Enemy1" type="CharacterBody2D"]
+collision_layer = 8
+floor_constant_speed = true
+script = ExtResource("1_b4fmk")
+
+[node name="Killzone" parent="." instance=ExtResource("3_n2eyf")]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_7lxrq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r463f")
+autoplay = "default"
+frame_progress = 0.0914484
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-7, 0)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(8, 0)
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+target_position = Vector2(0, 17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_b4fmk")
