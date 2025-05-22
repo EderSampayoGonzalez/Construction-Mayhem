@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmlnvkoyyiw0y"]
+
+[ext_resource type="FontFile" uid="uid://bch6iijrcg0cv" path="res://Assets/Fonts/dogicapixel.ttf" id="1_myfpi"]
+[ext_resource type="PackedScene" uid="uid://teqc1yixvekb" path="res://Scenes/map_items/item_block.tscn" id="2_0vv18"]
+[ext_resource type="Script" uid="uid://ctjp8m6iyjui1" path="res://Scripts/tab_container.gd" id="2_lq2vn"]
+
+[node name="Item_select" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
+offset_right = 142.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("1_myfpi")
+theme_override_font_sizes/font_size = 8
+current_tab = 0
+script = ExtResource("2_lq2vn")
+
+[node name="Tier 1" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Tier 1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Tier 1/ScrollContainer"]
+layout_mode = 2
+
+[node name="Item_block" parent="TabContainer/Tier 1/ScrollContainer/VBoxContainer" instance=ExtResource("2_0vv18")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Tier 1/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Tier 2" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Tier 2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Tier 2/ScrollContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Tier 2/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="mouse_entered" from="TabContainer" to="TabContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TabContainer" to="TabContainer" method="_on_mouse_exited"]

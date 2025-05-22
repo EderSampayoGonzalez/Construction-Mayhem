@@ -7,12 +7,14 @@ var can_jump = true
 #https://youtu.be/ai331P2U1pE?si=JMlwshy2V6oSa96C
 @export var player_id: int
 
+## La fuerza con la que el jugador empuja los objetoscon fisicas
+@export var push_force = 35.0
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer: Timer = $CoyoteTimer
 
 func _ready() -> void:
 	add_to_group("Players")
-	Global.add_player(self.player_id)
 
 func _on_coyote_timer_timeout() -> void:
 	can_jump = false
@@ -61,5 +63,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		animated_sprite.play("Falling_%s" % [player_id])
 		
-	
 	move_and_slide()
+	
+	# This represents the player's inertia.
+
+	#https://kidscancode.org/godot_recipes/4.x/physics/character_vs_rigid/index.html
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
