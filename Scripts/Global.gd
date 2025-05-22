@@ -4,6 +4,9 @@ var player_scores: Array = [0,0]
 var current_scene = null
 var objects_list: Array = [] ## Guarda una lista con todos los objetos guardados en res:/Scenes/map_objects para ser colocados en el editor
 var in_game_objects: Array = [] ## Guarda los objetos en formato [archivo_objeto, posición] para ser colocados en el nivel
+var Player_colors : Array[Color] = ["Dodger Blue", "Orange"]
+
+var players_left = []
 
 func _ready() -> void:
 	#https://docs.godotengine.org/en/stable/classes/class_diraccess.html

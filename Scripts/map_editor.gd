@@ -20,6 +20,17 @@ var tile_size = 8
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
+	# Añade los objetos que se colocaron anteriormente a la escena
+	for items in Global.in_game_objects:
+		var object = load(items[0]).instantiate()
+		self.add_child(object)
+		if "freeze" in object:
+			object.freeze = true
+		if "modulate" in object:
+			object.modulate = Color(0.513, 0.513, 0.513) ## El color del fondo del editor
+		object.global_position = items[1]
+		print ("añadido objeto en editor: ", object)
+	
 	# Accede a la cantidad de jugadores a través del array de puntos y crea un diccionario del objeto preparado para cada jugador
 	for i in Global.player_scores.size():
 		object_players.get_or_add(i+1)
@@ -30,19 +41,12 @@ func _ready() -> void:
 		if "freeze" in item:
 			item.freeze = true
 		var temp : Dictionary = {item = item, item_PS = item_PS, object_has_been_placed = false}
+		print ("modulate" in item)
+		if "modulate" in item:
+			item.modulate = Global.Player_colors[i]
 		object_players[i+1] = temp
 	
 	print (object_players)
-	
-	# Añade los objetos que se col0ocaron anteriormente a la escena
-	for items in Global.in_game_objects:
-		var object = load(items[0]).instantiate()
-		self.add_child(object)
-		if "freeze" in object:
-			object.freeze = true
-		object.global_position = items[1]
-		print ("añadido objeto en editor: ", object)
-		
 	
 
 

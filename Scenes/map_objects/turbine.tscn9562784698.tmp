@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://clghh1cbnbp8o"]
+
+[ext_resource type="Script" uid="uid://qy0guywwk1x8" path="res://Scripts/turbine.gd" id="1_cusn3"]
+[ext_resource type="Texture2D" uid="uid://c7rqoddkds28d" path="res://Assets/Tilemap/monochrome_tilemap_transparent_packed.png" id="2_y65fu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gax8"]
+size = Vector2(30, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yaoqa"]
+size = Vector2(30, 55)
+
+[node name="turbine" type="Area2D"]
+script = ExtResource("1_cusn3")
+
+[node name="turbine_collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_8gax8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_y65fu")
+vframes = 2
+frame = 1
+region_enabled = true
+region_rect = Rect2(112, 288, 32, 32)
+
+[node name="wind" type="Area2D" parent="."]
+
+[node name="wind_collision" type="CollisionShape2D" parent="wind"]
+position = Vector2(0, -35.5)
+shape = SubResource("RectangleShape2D_yaoqa")
+debug_color = Color(0, 0.635984, 0.410528, 0.42)
+
+[connection signal="body_entered" from="wind" to="." method="_on_wind_body_entered"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://clghh1cbnbp8o"]
+
+[ext_resource type="Script" uid="uid://qy0guywwk1x8" path="res://Scripts/turbine.gd" id="1_cusn3"]
+[ext_resource type="Texture2D" uid="uid://c7rqoddkds28d" path="res://Assets/Tilemap/monochrome_tilemap_transparent_packed.png" id="2_y65fu"]
+[ext_resource type="PackedScene" uid="uid://di81n38x6bejw" path="res://Scenes/wind.tscn" id="3_y65fu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gax8"]
+size = Vector2(30, 15)
+
+[node name="Area2D" type="StaticBody2D"]
+collision_mask = 3
+script = ExtResource("1_cusn3")
+
+[node name="turbine_collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_8gax8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_y65fu")
+vframes = 2
+region_enabled = true
+region_rect = Rect2(112, 288, 32, 32)
+
+[node name="wind" parent="." instance=ExtResource("3_y65fu")]
+collision_mask = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

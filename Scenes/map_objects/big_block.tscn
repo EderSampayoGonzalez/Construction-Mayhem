@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://nrgwh6inxqh0"]
 
-[ext_resource type="PackedScene" uid="uid://xfhr5g1vc0hi" path="res://Scenes/map_objects/block.tscn" id="1_o8qqs"]
+[ext_resource type="PackedScene" uid="uid://xfhr5g1vc0hi" path="res://Scenes/map_items/block.tscn" id="1_o8qqs"]
 [ext_resource type="Texture2D" uid="uid://c7rqoddkds28d" path="res://Assets/Tilemap/monochrome_tilemap_transparent_packed.png" id="2_7ex6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8qqs"]
 size = Vector2(48, 48)
 
 [node name="big_block" instance=ExtResource("1_o8qqs")]
-mass = 1.5
+mass = 0.8
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_o8qqs")

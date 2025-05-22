@@ -130,25 +130,24 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6t5aa"]
-radius = 4.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0jre"]
+size = Vector2(8, 7)
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 collision_layer = 2
 floor_max_angle = 1.0472
+platform_on_leave = 1
 safe_margin = 0.12
 script = ExtResource("1_cvnsp")
-push_force = 20.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x3wgy")
 animation = &"Run_2"
 autoplay = "Idle_1"
-frame_progress = 0.790457
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
-shape = SubResource("CircleShape2D_6t5aa")
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_s0jre")
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.15

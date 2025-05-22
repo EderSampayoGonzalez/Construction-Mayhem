@@ -44,8 +44,6 @@ func _process(delta):
 		z = 1 / clamp(r.size.y / screen_size.y, max_zoom, min_zoom)
 	zoom = lerp(zoom, Vector2.ONE * z, zoom_speed * delta)
 
-	# For debug
-	#get_parent().draw_cam_rect(r)
 
 func add_target(t):
 	if not t in targets:
@@ -53,4 +51,4 @@ func add_target(t):
 
 func remove_target(t):
 	if t in targets:
-		targets.remove(t)
+		targets.erase(t)

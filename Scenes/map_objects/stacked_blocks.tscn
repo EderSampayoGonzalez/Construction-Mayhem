@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsuq7if1i3c3g"]
+
+[ext_resource type="Script" uid="uid://b8su4leimvakc" path="res://Scripts/stacked_blocks.gd" id="1_dgl7u"]
+[ext_resource type="PackedScene" uid="uid://xfhr5g1vc0hi" path="res://Scenes/map_items/block.tscn" id="2_5djvj"]
+
+[node name="stacked_blocks" type="Node2D"]
+script = ExtResource("1_dgl7u")
+
+[node name="Block" parent="." instance=ExtResource("2_5djvj")]
+
+[node name="Block2" parent="." instance=ExtResource("2_5djvj")]
+position = Vector2(3, -16)
+
+[node name="Block3" parent="." instance=ExtResource("2_5djvj")]
+position = Vector2(-1, -32)
+
+[node name="Block4" parent="." instance=ExtResource("2_5djvj")]
+position = Vector2(3, -48)

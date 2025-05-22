@@ -1,19 +1,23 @@
 extends CharacterBody2D
 
-const SPEED = 120.0
+const SPEED = 110.0
 const JUMP_VELOCITY = -300.0
 var can_jump = true
+
+var added_forces = Vector2(0,0)
 
 #https://youtu.be/ai331P2U1pE?si=JMlwshy2V6oSa96C
 @export var player_id: int
 
 ## La fuerza con la que el jugador empuja los objetoscon fisicas
-@export var push_force = 35.0
+@export var push_force = 12.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer: Timer = $CoyoteTimer
 
 func _ready() -> void:
+	#Cambia el color del personaje segun su id de jugador https://www.youtube.com/watch?v=EKGhfneG2sw
+	animated_sprite.self_modulate = Global.Player_colors[player_id-1]
 	add_to_group("Players")
 
 func _on_coyote_timer_timeout() -> void:
@@ -55,6 +59,7 @@ func _physics_process(delta: float) -> void:
 	#activa las animaciones
 	if not has_node("CollisionShape2D"):
 		animated_sprite.play("Dead_%s" % [player_id])
+		get_parent().get_node("PlayerCamera").remove_target(self)
 	elif is_on_floor():
 		if direction == 0:
 			animated_sprite.play("Idle_%s" % [player_id])
@@ -62,7 +67,9 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("Run_%s" % [player_id])
 	else:
 		animated_sprite.play("Falling_%s" % [player_id])
-		
+	
+	velocity += added_forces
+	
 	move_and_slide()
 	
 	# This represents the player's inertia.
