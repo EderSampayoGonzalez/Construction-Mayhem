@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://q3pebhc2b5fw"]
 
-[ext_resource type="Script" uid="uid://dl46f7vthv1q5" path="res://enemy_1.gd" id="1_b4fmk"]
+[ext_resource type="Script" uid="uid://dl46f7vthv1q5" path="res://Scripts/enemy_1.gd" id="1_b4fmk"]
 [ext_resource type="Texture2D" uid="uid://c7rqoddkds28d" path="res://Assets/Tilemap/monochrome_tilemap_transparent_packed.png" id="2_oi0fj"]
 [ext_resource type="PackedScene" uid="uid://cs33gmubkm2pr" path="res://Scenes/killzone.tscn" id="3_n2eyf"]
 
@@ -47,7 +47,7 @@ shape = SubResource("RectangleShape2D_7lxrq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_r463f")
 autoplay = "default"
-frame_progress = 0.0914484
+frame_progress = 0.820914
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 target_position = Vector2(-7, 0)

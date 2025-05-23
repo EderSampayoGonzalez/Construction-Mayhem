@@ -1,4 +1,7 @@
 extends StaticBody2D
+
+## Objeto que agrega una corriente de viento
+
 @onready var wind: Area2D = $wind
 @onready var turbine_collision: CollisionShape2D = $turbine_collision
 @onready var timer: Timer = $Timer

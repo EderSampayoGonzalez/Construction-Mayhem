@@ -1,22 +1,26 @@
 extends Area2D
+## Objeto de cofre que se empareja con el objeto de llave [br]
+##
+## Cuando un jugador con la llave se acerca al cofre, recibe una señal de la llave para abrirse e incrementar la puntuación del jugador[br]
+## posee un [Timer] que se inicia al abrirse, y al terminar manda una señal para cambiar al editor
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
-signal chest_swap()
 
-func _on_key_chest_opened(player_id: int) -> void:
-	sprite_2d.frame = 1
-	collision_shape_2d.queue_free()
-	print("cofre Abierto por jugador ", player_id)
-	Global.increase_score(player_id)
-	timer.start()
-
-
-func _on_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+signal chest_swap() ## Señal que se manda despues de abrir el cofre
 
 
 func _on_timer_timeout() -> void:
 	print ("Cambiando a la escena del editor...")
 	emit_signal("chest_swap")
-	pass # Replace with function body.
+
+## Recibe el jugador con la llave que tocó el cofre, para aumentar su puntaje y cambiar al editor
+func _on_key_1_chest_opened(player_id: int) -> void:
+	sprite_2d.frame = 1
+	collision_shape_2d.queue_free()
+	
+	print("cofre Abierto por jugador ", player_id)
+	# Incrementa la puntuación del jugador que abrió el cofre
+	Global.increase_score(player_id)
+	timer.start()
