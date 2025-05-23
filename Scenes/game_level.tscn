@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://b54p46keix0qh"]
+[gd_scene load_steps=17 format=4 uid="uid://b54p46keix0qh"]
 
 [ext_resource type="Script" uid="uid://bdg0gfa8saktr" path="res://Scripts/game_level.gd" id="1_mql7d"]
 [ext_resource type="PackedScene" uid="uid://leivex8xluuv" path="res://Scenes/Level_scenes/player.tscn" id="2_5x8s8"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://boro3hlgwmxn1" path="res://Scenes/map_objects/spike.tscn" id="5_r5s48"]
 [ext_resource type="PackedScene" uid="uid://cs33gmubkm2pr" path="res://Scenes/killzone.tscn" id="6_mxr21"]
 [ext_resource type="PackedScene" uid="uid://clghh1cbnbp8o" path="res://Scenes/map_objects/turbine.tscn" id="7_ivh4m"]
+[ext_resource type="PackedScene" uid="uid://xfhr5g1vc0hi" path="res://Scenes/map_items/block.tscn" id="10_mxr21"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r5s48"]
 texture = ExtResource("3_g3g87")
@@ -1104,6 +1105,9 @@ position = Vector2(335, -73)
 
 [node name="level_enemy" parent="Objects" instance=ExtResource("4_ukri2")]
 position = Vector2(245, 105)
+
+[node name="Block" parent="Objects" instance=ExtResource("10_mxr21")]
+position = Vector2(127, -33)
 
 [node name="Killzone" parent="." instance=ExtResource("6_mxr21")]
 position = Vector2(-6, 74)
