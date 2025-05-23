@@ -36,11 +36,10 @@ func _process(delta: float) -> void:
 		if player.get_node("AnimatedSprite2D").animation == StringName("Dead_%s" % [player.player_id]):
 			print("jugador muerto")
 			player = null
-			position = global_position.lerp(Vector2(0,0), 2*(delta))
+			position = global_position.lerp(Vector2(0,0), 2*delta)
 	else:
 		# Si está demasiado abajo del nivel sin tener un jugador asociado, regresa a su posición original
-		if global_position.y > 100:
-			position = initial_pos
+		position = global_position.lerp(initial_pos, 2*delta)
 
 ## Si un jugador toca la llave, la llava se asocia al jugador
 ## @tutorial https://www.youtube.com/watch?v=tN76BJ2XyDQ

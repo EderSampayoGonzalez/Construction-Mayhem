@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://clghh1cbnbp8o"]
+
+[ext_resource type="Script" uid="uid://pstway1x6o66" path="res://Scripts/spring.gd" id="1_lnc4d"]
+[ext_resource type="PackedScene" uid="uid://di81n38x6bejw" path="res://Scenes/wind.tscn" id="2_3wbat"]
+[ext_resource type="Texture2D" uid="uid://bwinntlv2jair" path="res://Assets/Tiles/Transparent/tile_0163.png" id="3_ylppm"]
+[ext_resource type="Texture2D" uid="uid://d3a762s8pb1dt" path="res://Assets/Tiles/Transparent/tile_0164.png" id="4_1qxd4"]
+[ext_resource type="Texture2D" uid="uid://cfy5gexaodc80" path="res://Assets/Tiles/Transparent/tile_0165.png" id="5_46fsf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gax8"]
+size = Vector2(14, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dxpge"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ylppm")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.1,
+"texture": ExtResource("4_1qxd4")
+}, {
+"duration": 1.5,
+"texture": ExtResource("5_46fsf")
+}],
+"loop": true,
+"name": &"Spring",
+"speed": 10.0
+}]
+
+[node name="Spring" type="StaticBody2D"]
+collision_mask = 3
+script = ExtResource("1_lnc4d")
+
+[node name="base_collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_8gax8")
+
+[node name="wind" parent="." instance=ExtResource("2_3wbat")]
+visible = false
+position = Vector2(0, 7)
+scale = Vector2(0.2, 0.2)
+push_force = 400
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dxpge")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.73584
+
+[connection signal="body_entered" from="wind" to="." method="_on_wind_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

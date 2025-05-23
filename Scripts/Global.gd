@@ -1,11 +1,11 @@
 extends Node
-
 ## Singleton que maneja variables importantes para el manejo del juego entre escenas [br]
 ## variables mas relevantes:[br]
 ## [param player_scores] almacena la puntuación de cada jugador [br]
 ## [param objects_list] Guarda una lista con todos los objetos guardados en res:/Scenes/map_objects para ser colocados en el editor [br]
 ## [param in_game_objects] Guarda los objetos en formato [archivo_objeto, posición] para ser colocados en el nivel [br]
 
+## Manejo de patrón de diseño Singleton para el acceso a distintos tipos de variables globales
 
 var player_scores: Array = [0,0] ## Almacena la puntuación de cada jugador
 var current_scene = null

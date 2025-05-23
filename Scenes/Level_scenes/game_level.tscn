@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dkmosrbmlpgxa" path="res://Scenes/Level_scenes/key.tscn" id="5_e38tf"]
 [ext_resource type="PackedScene" uid="uid://boro3hlgwmxn1" path="res://Scenes/map_objects/spike.tscn" id="5_r5s48"]
 [ext_resource type="PackedScene" uid="uid://cs33gmubkm2pr" path="res://Scenes/killzone.tscn" id="6_mxr21"]
-[ext_resource type="PackedScene" uid="uid://clghh1cbnbp8o" path="res://Scenes/map_objects/turbine.tscn" id="7_ivh4m"]
+[ext_resource type="PackedScene" uid="uid://clghh1cbnbp8o" path="res://Scenes/map_objects/spring.tscn" id="7_ivh4m"]
 [ext_resource type="PackedScene" uid="uid://xfhr5g1vc0hi" path="res://Scenes/map_items/block.tscn" id="10_mxr21"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r5s48"]
@@ -1095,7 +1095,7 @@ collision_enabled = false
 position = Vector2(-209, 54)
 
 [node name="Key1" parent="Objects" instance=ExtResource("5_e38tf")]
-position = Vector2(-104, 50)
+position = Vector2(491, 38)
 
 [node name="level_turbine" parent="Objects" instance=ExtResource("7_ivh4m")]
 position = Vector2(127, 6)
@@ -1107,7 +1107,7 @@ position = Vector2(335, -73)
 position = Vector2(245, 105)
 
 [node name="Block" parent="Objects" instance=ExtResource("10_mxr21")]
-position = Vector2(127, -33)
+position = Vector2(426, 40)
 
 [node name="Killzone" parent="." instance=ExtResource("6_mxr21")]
 position = Vector2(-6, 74)
@@ -1115,6 +1115,9 @@ position = Vector2(-6, 74)
 [node name="WorldBoundary" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(45, 93)
 shape = SubResource("WorldBoundaryShape2D_3dryh")
+
+[node name="Area2D" parent="." instance=ExtResource("7_ivh4m")]
+position = Vector2(-86, 57)
 
 [connection signal="area_exited" from="Objects/Chest_1" to="Objects/Key1" method="_on_chest_area_exited"]
 [connection signal="body_entered" from="Objects/Chest_1" to="Objects/Key1" method="_on_chest_body_entered"]

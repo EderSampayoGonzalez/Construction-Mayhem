@@ -130,8 +130,8 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0jre"]
-size = Vector2(10, 7)
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0jre"]
+radius = 5.02494
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 collision_layer = 2
@@ -147,7 +147,7 @@ autoplay = "Idle_1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3.5)
-shape = SubResource("RectangleShape2D_s0jre")
+shape = SubResource("CircleShape2D_s0jre")
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.15

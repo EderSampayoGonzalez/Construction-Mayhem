@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://clghh1cbnbp8o"]
+[gd_scene load_steps=5 format=3 uid="uid://csrd7cojl8nic"]
 
 [ext_resource type="Script" uid="uid://qy0guywwk1x8" path="res://Scripts/turbine.gd" id="1_cusn3"]
 [ext_resource type="Texture2D" uid="uid://c7rqoddkds28d" path="res://Assets/Tilemap/monochrome_tilemap_transparent_packed.png" id="2_y65fu"]
@@ -24,6 +24,7 @@ region_rect = Rect2(112, 288, 32, 32)
 [node name="wind" parent="." instance=ExtResource("3_y65fu")]
 position = Vector2(0, 2)
 collision_mask = 3
+push_force = 25
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1

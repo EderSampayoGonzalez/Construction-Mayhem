@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://xs6v8ube4c8y"]
 
-[ext_resource type="PackedScene" uid="uid://b54p46keix0qh" path="res://Scenes/game_level.tscn" id="1_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://b54p46keix0qh" path="res://Scenes/Level_scenes/game_level.tscn" id="1_qxrlw"]
 [ext_resource type="FontFile" uid="uid://bch6iijrcg0cv" path="res://Assets/Fonts/dogicapixel.ttf" id="3_wrm1d"]
 
 [sub_resource type="GDScript" id="GDScript_qxrlw"]

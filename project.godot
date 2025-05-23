@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="juego"
+config/name="Construction Mayhem"
+config/description="holi"
 run/main_scene="res://Scenes/Level_scenes/game.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://llwuvbpa5tni"
 
 [autoload]
 
