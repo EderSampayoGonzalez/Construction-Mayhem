@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkmosrbmlpgxa"]
+[gd_scene load_steps=5 format=3 uid="uid://dkmosrbmlpgxa"]
 
 [ext_resource type="Script" uid="uid://bu8kdv56us65j" path="res://Scripts/key.gd" id="1_udxw8"]
 [ext_resource type="Texture2D" uid="uid://b6bxrt7jrpv3m" path="res://Assets/Tiles/Transparent/tile_0096.png" id="1_ut0wq"]
+[ext_resource type="AudioStream" uid="uid://ct4u5ey8781m2" path="res://Assets/Sfx/collect_points.mp3" id="3_oqt2c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udxw8"]
 size = Vector2(20, 16)
@@ -21,6 +22,10 @@ shape = SubResource("RectangleShape2D_udxw8")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="key_taken_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_oqt2c")
+pitch_scale = 1.1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

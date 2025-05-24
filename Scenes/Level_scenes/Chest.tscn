@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://fk66gouiss70"]
+[gd_scene load_steps=5 format=3 uid="uid://fk66gouiss70"]
 
 [ext_resource type="Script" uid="uid://c2maj7d8fxx0e" path="res://Scripts/chest.gd" id="1_mr3w3"]
 [ext_resource type="Texture2D" uid="uid://bh5nd5bbssm4q" path="res://Assets/Tilemap/monochrome_tilemap_transparent.png" id="2_fqgxf"]
+[ext_resource type="AudioStream" uid="uid://kp8pyw1de3l4" path="res://Assets/Sfx/stab_b_major(spring).mp3" id="3_7v64e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mr3w3"]
 size = Vector2(26, 20)
@@ -24,6 +25,9 @@ shape = SubResource("RectangleShape2D_mr3w3")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="open_chest_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7v64e")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

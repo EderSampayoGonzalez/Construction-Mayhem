@@ -7,6 +7,7 @@ extends Area2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
+@onready var open_chest_sound: AudioStreamPlayer2D = $open_chest_sound
 
 signal chest_swap() ## Señal que se manda despues de abrir el cofre
 
@@ -17,6 +18,8 @@ func _on_timer_timeout() -> void:
 
 ## Recibe el jugador con la llave que tocó el cofre, para aumentar su puntaje y cambiar al editor
 func _on_key_1_chest_opened(player_id: int) -> void:
+	open_chest_sound.play()
+	
 	sprite_2d.frame = 1
 	collision_shape_2d.queue_free()
 	

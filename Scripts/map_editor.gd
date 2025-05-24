@@ -11,6 +11,8 @@ extends Node2D
 @onready var level = load("res://Scenes/Level_scenes/game_level.tscn").instantiate()
 @onready var editor_level = self
 @onready var swap_timer: Timer = $Swap_Timer #Temporizador que al terminar cambia el nivel
+@onready var tap_sound: AudioStreamPlayer = $tap_sound
+@onready var object_set_sound: AudioStreamPlayer2D = $object_set_sound
 
 ## Referencia a la lista de objetos global
 var objects_list = Global.objects_list
@@ -37,6 +39,7 @@ var limit_y : int = 160
 var limit_min_y : int = -160
 
 var rng = RandomNumberGenerator.new()
+var last_just_pressed : bool
 
 func _ready() -> void:
 	# Añade los objetos que se colocaron anteriormente a la escena
@@ -147,16 +150,21 @@ func handle_debug():
 
 ## Maneja toda la lógica para mover el objeto del jugadordado por el id
 func handle_player(id: int):
+	var play_tap_sound: bool = false
+	
 	item = object_players[id]["item"]
 	
-	
 	if(Input.is_action_just_pressed("move_left_%s" % [id])):
+		play_tap_sound = true
 		item.global_position.x -= tile_size
 	if(Input.is_action_just_pressed("move_right_%s" % [id])):
+		play_tap_sound = true
 		item.global_position.x += tile_size
 	if(Input.is_action_just_pressed("move_down_%s" % [id])):
+		play_tap_sound = true
 		item.global_position.y += tile_size
 	if(Input.is_action_just_pressed("move_up_%s" % [id])):
+		play_tap_sound = true
 		item.global_position.y -= tile_size
 	
 	
@@ -165,6 +173,11 @@ func handle_player(id: int):
 		Global.add_object(object_players[id]["item_PS"].resource_path, item.global_position)
 		object_players[id]["object_has_been_placed"] = true
 		objects_placed += 1
+		object_set_sound.play()
+		
+	
+	if play_tap_sound:
+		tap_sound.play()
 	
 	if item.global_position.x < limit_min_x:
 		item.global_position.x = limit_min_x

@@ -5,6 +5,7 @@ extends Area2D
 ## Si un jugador entra en contacto con esta zona, lo mata
 
 @onready var timer: Timer = $Timer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _on_body_entered(body: Node2D) -> void:
 	print ("jugador muerto: ", body.name) 
@@ -17,6 +18,7 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	# Hace al juego entero mas lento por un tiempo
 	Engine.time_scale = 0.5
+	audio_stream_player.play()
 	timer.start()
 
 ## Regresa la velocidad normal al juego, si todo los jugadores murieron, se reiniciará el nivel

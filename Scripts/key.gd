@@ -6,6 +6,7 @@ extends Area2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var timer: Timer = $Timer
+@onready var key_taken_sound: AudioStreamPlayer2D = $key_taken_sound
 
 var player: Player = null ## El jugador al que se asocia la llave
 
@@ -45,12 +46,13 @@ func _process(delta: float) -> void:
 ## @tutorial https://www.youtube.com/watch?v=tN76BJ2XyDQ
 func _on_body_entered(body: CharacterBody2D) -> void:
 	#print (body.get_groups())
-	if key_taken == false && body.is_in_group("Players"):
-		if body != self.player:
-			timer.start()
-			key_taken = true
-			player = get_node(body.get_path())
-			print ("Llave agarrada por jugador ", body.player_id)
+	if body != self.player and !key_taken:
+		modulate = body.modulate
+		key_taken_sound.play()
+		timer.start()
+		key_taken = true
+		player = get_node(body.get_path())
+		print ("Llave agarrada por jugador ", body.player_id)
 
 ## si el jugador entra en el cofre, activa in_chest_area para abrir el cofre
 func _on_chest_body_entered(body: Node2D) -> void:

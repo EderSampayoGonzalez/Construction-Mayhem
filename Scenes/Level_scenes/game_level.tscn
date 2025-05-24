@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://b54p46keix0qh"]
+[gd_scene load_steps=18 format=4 uid="uid://b54p46keix0qh"]
 
 [ext_resource type="Script" uid="uid://bdg0gfa8saktr" path="res://Scripts/game_level.gd" id="1_mql7d"]
 [ext_resource type="PackedScene" uid="uid://leivex8xluuv" path="res://Scenes/Level_scenes/player.tscn" id="2_5x8s8"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cs33gmubkm2pr" path="res://Scenes/killzone.tscn" id="6_mxr21"]
 [ext_resource type="PackedScene" uid="uid://clghh1cbnbp8o" path="res://Scenes/map_objects/spring.tscn" id="7_ivh4m"]
 [ext_resource type="PackedScene" uid="uid://xfhr5g1vc0hi" path="res://Scenes/map_items/block.tscn" id="10_mxr21"]
+[ext_resource type="PackedScene" uid="uid://csrd7cojl8nic" path="res://Scenes/map_objects/turbine.tscn" id="12_on85y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r5s48"]
 texture = ExtResource("3_g3g87")
@@ -1095,7 +1096,7 @@ collision_enabled = false
 position = Vector2(-209, 54)
 
 [node name="Key1" parent="Objects" instance=ExtResource("5_e38tf")]
-position = Vector2(491, 38)
+position = Vector2(-104, 54)
 
 [node name="level_turbine" parent="Objects" instance=ExtResource("7_ivh4m")]
 position = Vector2(127, 6)
@@ -1118,6 +1119,9 @@ shape = SubResource("WorldBoundaryShape2D_3dryh")
 
 [node name="Area2D" parent="." instance=ExtResource("7_ivh4m")]
 position = Vector2(-86, 57)
+
+[node name="Area2D2" parent="." instance=ExtResource("12_on85y")]
+position = Vector2(-31, 70)
 
 [connection signal="area_exited" from="Objects/Chest_1" to="Objects/Key1" method="_on_chest_area_exited"]
 [connection signal="body_entered" from="Objects/Chest_1" to="Objects/Key1" method="_on_chest_body_entered"]

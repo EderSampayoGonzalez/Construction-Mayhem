@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://csrd7cojl8nic"]
+[gd_scene load_steps=7 format=3 uid="uid://csrd7cojl8nic"]
 
 [ext_resource type="Script" uid="uid://qy0guywwk1x8" path="res://Scripts/turbine.gd" id="1_cusn3"]
 [ext_resource type="Texture2D" uid="uid://c7rqoddkds28d" path="res://Assets/Tilemap/monochrome_tilemap_transparent_packed.png" id="2_y65fu"]
 [ext_resource type="PackedScene" uid="uid://di81n38x6bejw" path="res://Scenes/wind.tscn" id="3_y65fu"]
+[ext_resource type="AudioStream" uid="uid://cb4fxnwmhn02k" path="res://Assets/Sfx/helicopter_sound.mp3" id="4_yaoqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gax8"]
 size = Vector2(30, 13)
 
-[node name="Area2D" type="StaticBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_yaoqa"]
+radius = 103.078
+
+[node name="turbine" type="StaticBody2D"]
 collision_mask = 3
 script = ExtResource("1_cusn3")
 
@@ -30,4 +34,16 @@ push_force = 25
 wait_time = 0.1
 autostart = true
 
+[node name="turbine_noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yaoqa")
+pitch_scale = 0.7
+max_distance = 300.0
+
+[node name="noise_area" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="noise_area"]
+shape = SubResource("CircleShape2D_yaoqa")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="noise_area" to="." method="_on_noise_area_body_entered"]

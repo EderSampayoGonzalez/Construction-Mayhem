@@ -4,19 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://55w1tx222jro" path="res://Assets/Tiles/Transparent/tile_0119.png" id="2_43i0t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yaoqa"]
-size = Vector2(30, 60)
+size = Vector2(25, 57)
 
 [node name="wind" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_43i0t")
 
 [node name="wind_collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -38)
+position = Vector2(0, -36.5)
 shape = SubResource("RectangleShape2D_yaoqa")
 debug_color = Color(0, 0.635984, 0.410528, 0.42)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="wind_collision"]
-position = Vector2(0, 27.5)
+position = Vector2(1, 27.5)
 rotation = -1.5708
 amount = 10
 texture = ExtResource("2_43i0t")

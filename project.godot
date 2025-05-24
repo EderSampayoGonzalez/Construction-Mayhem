@@ -19,6 +19,7 @@ config/icon="uid://llwuvbpa5tni"
 [autoload]
 
 Global="*res://Scripts/Global.gd"
+LevelMusic="*res://Scenes/level_music.tscn"
 
 [dotnet]
 

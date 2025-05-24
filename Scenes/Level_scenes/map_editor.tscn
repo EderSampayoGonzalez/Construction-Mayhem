@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://buercft5ay53p"]
+[gd_scene load_steps=7 format=4 uid="uid://buercft5ay53p"]
 
 [ext_resource type="Script" uid="uid://204vx7vx4ncf" path="res://Scripts/map_editor.gd" id="1_7xmfy"]
 [ext_resource type="Texture2D" uid="uid://cklt5uqh6n130" path="res://Assets/Tilemap/monochrome_tilemap_packed.png" id="1_cy2dn"]
+[ext_resource type="AudioStream" uid="uid://b8e5lnp0n713w" path="res://Assets/Sfx/tap.wav" id="3_awke5"]
+[ext_resource type="AudioStream" uid="uid://di1yip4nvu2xu" path="res://Assets/Sfx/blip-2.wav" id="4_dwbiv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s53nr"]
 texture = ExtResource("1_cy2dn")
@@ -658,5 +660,13 @@ zoom = Vector2(2, 2)
 [node name="Swap_Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="tap_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_awke5")
+volume_db = -5.0
+pitch_scale = 1.75
+
+[node name="object_set_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dwbiv")
 
 [connection signal="timeout" from="Swap_Timer" to="." method="_on_swap_timer_timeout"]

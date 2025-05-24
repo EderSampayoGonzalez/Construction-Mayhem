@@ -22,10 +22,15 @@ var can_jump = true ## verdadero si puede saltar, se modifica en el coyote_time
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer: Timer = $CoyoteTimer
+@onready var footstep: AudioStreamPlayer2D = $footstep
+@onready var jump: AudioStreamPlayer2D = $jump
+
+var direction
+var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	#Cambia el color del personaje segun su id de jugador https://www.youtube.com/watch?v=EKGhfneG2sw
-	animated_sprite.self_modulate = Global.Player_colors[player_id-1]
+	modulate = Global.Player_colors[player_id-1]
 	add_to_group("Players")
 
 ## elimina la posibilidad de saltar cuando se termina el tiempo del coyote_time
@@ -44,6 +49,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Maneja el salto
 	if Input.is_action_just_pressed("jump_%s" % [player_id]) and can_jump:
+		jump.play()
 		velocity.y = JUMP_VELOCITY
 		can_jump = false
 	
@@ -54,7 +60,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Obtiene la dirección del input: 0 si no hay ningun input
 	# 1: derecha, -1: izquierda
-	var direction := Input.get_axis("move_left_%s" % [player_id], "move_right_%s" % [player_id])
+	direction = Input.get_axis("move_left_%s" % [player_id], "move_right_%s" % [player_id])
 	#Aplica el movimiento basado en la dirección
 	if direction:
 		velocity.x = direction * SPEED
@@ -75,10 +81,13 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.play("Dead_%s" % [player_id])
 		get_parent().get_node("PlayerCamera").remove_target(self)
 	
-	elif is_on_floor(): #Animacioones de movimiento
+	elif is_on_floor(): #Animaciones de movimiento 
 		if direction == 0:
 			animated_sprite.play("Idle_%s" % [player_id])
 		else:
+			if !footstep.is_playing():
+				footstep.pitch_scale = rng.randf_range(0.9,1.1)
+				footstep.play()
 			animated_sprite.play("Run_%s" % [player_id])
 	
 	else: #Animaciones de caer

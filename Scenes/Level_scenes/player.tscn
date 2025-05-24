@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://leivex8xluuv"]
+[gd_scene load_steps=19 format=3 uid="uid://leivex8xluuv"]
 
 [ext_resource type="Script" uid="uid://gsepujrvqlxd" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://u8qldoy1r1c" path="res://Assets/Tilemap/Players_tilemap.png" id="1_v0iea"]
+[ext_resource type="AudioStream" uid="uid://kbcg5m051rrm" path="res://Assets/Sfx/8bit_one_footstep.mp3" id="3_xp8ch"]
+[ext_resource type="AudioStream" uid="uid://cciv8xxuvaau8" path="res://Assets/Sfx/jump_1.mp3" id="4_tkx1e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v0iea"]
 atlas = ExtResource("1_v0iea")
@@ -152,5 +154,15 @@ shape = SubResource("CircleShape2D_s0jre")
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
+
+[node name="footstep" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_xp8ch")
+volume_db = -5.0
+pitch_scale = 3.32
+
+[node name="jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_tkx1e")
+volume_db = -8.0
+pitch_scale = 0.8
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
