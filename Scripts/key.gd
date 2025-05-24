@@ -10,12 +10,21 @@ extends Area2D
 
 var player: Player = null ## El jugador al que se asocia la llave
 
-@onready var initial_pos = global_position
+@export var init_pos: Array[Vector2] = [] ## Psobles posiciones que puede tomar la llave iniciando la partida
+@onready var initial_pos
+
 var key_taken = false ## Revisa si la llave ya fue tomada
 var in_chest_area = false ## Revisa si el jugador se encuentra tocando el cofre
 var player_pos = 0 ## Posición del jugador
 
 signal chest_opened (player_id: int) ## Señal que se manda si la llave alcanzó al cofre
+
+## Se mueve aleatoreamente entre las posiciones designadas por init_pos
+func _ready() -> void:
+	var rng = RandomNumberGenerator.new()
+	if init_pos.size() != 0:
+		self.global_position = init_pos[rng.randi_range(0,init_pos.size()-1)]
+	initial_pos = global_position
 
 func _process(delta: float) -> void:
 	

@@ -1093,10 +1093,12 @@ collision_enabled = false
 [node name="Objects" type="Node" parent="."]
 
 [node name="Chest_1" parent="Objects" instance=ExtResource("4_w0fld")]
-position = Vector2(-209, 54)
+position = Vector2(-211, -73)
+init_pos = Array[Vector2]([Vector2(-209, 55), Vector2(-209, -73), Vector2(-266, -8)])
 
 [node name="Key1" parent="Objects" instance=ExtResource("5_e38tf")]
-position = Vector2(-104, 54)
+position = Vector2(536, -37)
+init_pos = Array[Vector2]([Vector2(484, -102), Vector2(484, 42), Vector2(536, 0)])
 
 [node name="level_turbine" parent="Objects" instance=ExtResource("7_ivh4m")]
 position = Vector2(127, 6)

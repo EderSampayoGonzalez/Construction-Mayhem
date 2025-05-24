@@ -9,7 +9,14 @@ extends Area2D
 @onready var timer: Timer = $Timer
 @onready var open_chest_sound: AudioStreamPlayer2D = $open_chest_sound
 
+@export var init_pos: Array[Vector2] = [] ## Psobles posiciones que puede tomar el cofre iniciando la partida
+
 signal chest_swap() ## Señal que se manda despues de abrir el cofre
+
+func _ready() -> void:
+	var rng = RandomNumberGenerator.new()
+	if init_pos.size() != 0:
+		self.global_position = init_pos[rng.randi_range(0,init_pos.size()-1)]
 
 
 func _on_timer_timeout() -> void:
@@ -21,6 +28,7 @@ func _on_key_1_chest_opened(player_id: int) -> void:
 	open_chest_sound.play()
 	
 	sprite_2d.frame = 1
+	sprite_2d.self_modulate = Global.Player_colors[player_id-1]
 	collision_shape_2d.queue_free()
 	
 	print("cofre Abierto por jugador ", player_id)

@@ -136,6 +136,7 @@ animations = [{
 radius = 5.02494
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
+z_index = 5
 collision_layer = 2
 floor_max_angle = 1.0472
 platform_on_leave = 1

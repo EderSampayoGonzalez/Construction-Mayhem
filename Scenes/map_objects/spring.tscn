@@ -48,6 +48,7 @@ push_force = 500
 stop_momentum = true
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
 one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -42,6 +42,8 @@ var rng = RandomNumberGenerator.new()
 var last_just_pressed : bool
 
 func _ready() -> void:
+	var last_y_pos = null
+	
 	# Añade los objetos que se colocaron anteriormente a la escena
 	for items in Global.in_game_objects:
 		var object = load(items[0]).instantiate()
@@ -66,8 +68,8 @@ func _ready() -> void:
 		self.add_child(item)
 		
 		#Fuerza los objetos a la cuadricula
-		item.global_position.x = ((round(item.global_position.x / 8)) * 8)
-		item.global_position.y = ((round(item.global_position.y / 8)) * 8)
+		item.global_position.x = ((round(item.global_position.x / 16)) * 16)
+		item.global_position.y = ((round(item.global_position.y / 8)) * 8) - 8
 		
 		print ("creando nuevo item: ", item.name)
 		
@@ -83,6 +85,13 @@ func _ready() -> void:
 		
 		# añade todas las variables al diccionario inicializadas
 		object_players[i+1] = temp
+		
+		# Mueve de lugar cada objeto de cada lugar para que no se solapen
+		if last_y_pos == null:
+			last_y_pos = item.global_position.y
+		else:
+			item.global_position.y = last_y_pos + 70
+			last_y_pos = item.global_position.y
 
 
 func _process(delta: float) -> void:
@@ -99,8 +108,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug_create_object"):
 		debug_item_PS = objects_list[rng.randi_range(0,objects_list.size()-1)]
 		item_debug = debug_item_PS.instantiate()
-		item.global_position.x = ((round(item.global_position.x / 8)) * 8)
-		item.global_position.y = ((round(item.global_position.y / 8)) * 8)
+		item.global_position.x = ((round(item.global_position.x / 16)) * 16)
+		item.global_position.y = ((round(item.global_position.y / 16)) * 16)
 		self.add_child(item_debug)
 		print ("creando nuevo item 1: ", item_debug.name)
 		if "freeze" in item_debug:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://fk66gouiss70"]
 
 [ext_resource type="Script" uid="uid://c2maj7d8fxx0e" path="res://Scripts/chest.gd" id="1_mr3w3"]
-[ext_resource type="Texture2D" uid="uid://bh5nd5bbssm4q" path="res://Assets/Tilemap/monochrome_tilemap_transparent.png" id="2_fqgxf"]
+[ext_resource type="Texture2D" uid="uid://c0lxvlcpe4poe" path="res://Assets/Tilemap/monochrome_tilemap.png" id="2_7v64e"]
 [ext_resource type="AudioStream" uid="uid://kp8pyw1de3l4" path="res://Assets/Sfx/stab_b_major(spring).mp3" id="3_7v64e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mr3w3"]
@@ -13,7 +13,8 @@ collision_mask = 6
 script = ExtResource("1_mr3w3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_fqgxf")
+z_index = 1
+texture = ExtResource("2_7v64e")
 hframes = 2
 region_enabled = true
 region_rect = Rect2(152, 322, 35, 17)

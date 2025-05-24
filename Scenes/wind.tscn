@@ -16,6 +16,7 @@ shape = SubResource("RectangleShape2D_yaoqa")
 debug_color = Color(0, 0.635984, 0.410528, 0.42)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="wind_collision"]
+z_index = 1
 position = Vector2(1, 27.5)
 rotation = -1.5708
 amount = 10
@@ -28,5 +29,5 @@ particle_flag_align_y = true
 gravity = Vector2(0, -30)
 initial_velocity_min = 10.0
 initial_velocity_max = 10.0
-scale_amount_min = 0.3
-scale_amount_max = 0.5
+scale_amount_min = 0.4
+scale_amount_max = 0.6
