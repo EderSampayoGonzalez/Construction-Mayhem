@@ -69,7 +69,7 @@ func _ready() -> void:
 		
 		#Fuerza los objetos a la cuadricula
 		item.global_position.x = ((round(item.global_position.x / 16)) * 16)
-		item.global_position.y = ((round(item.global_position.y / 8)) * 8) - 8
+		item.global_position.y = ((round(item.global_position.y / 8)) * 8)
 		
 		print ("creando nuevo item: ", item.name)
 		

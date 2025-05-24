@@ -1,35 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://xs6v8ube4c8y"]
+[gd_scene load_steps=2 format=3 uid="uid://xs6v8ube4c8y"]
 
-[ext_resource type="PackedScene" uid="uid://b54p46keix0qh" path="res://Scenes/Level_scenes/game_level.tscn" id="1_qxrlw"]
-[ext_resource type="FontFile" uid="uid://bch6iijrcg0cv" path="res://Assets/Fonts/dogicapixel.ttf" id="3_wrm1d"]
-
-[sub_resource type="GDScript" id="GDScript_qxrlw"]
-resource_name = "score"
-script/source = "extends Label
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	self.text = \"Jugador 1: %d\\n jugador2: %d\" % [Global.player_scores[0], Global.player_scores[1]]
-	pass
-"
+[ext_resource type="PackedScene" uid="uid://cqxqeyhb046m1" path="res://Scenes/menu_scenes/Main_menu.tscn" id="1_agd2m"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Game_scenes" type="Node" parent="."]
-
-[node name="game_level" parent="Game_scenes" instance=ExtResource("1_qxrlw")]
-
-[node name="Label" type="Label" parent="."]
-offset_left = -225.0
-offset_top = -29.0
-offset_right = -185.0
-offset_bottom = -6.0
-theme_override_fonts/font = ExtResource("3_wrm1d")
-theme_override_font_sizes/font_size = 8
-script = SubResource("GDScript_qxrlw")
+[node name="Main menu" parent="." instance=ExtResource("1_agd2m")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 517.0
+offset_top = 592.0
+offset_right = 517.0
+offset_bottom = 592.0
+grow_horizontal = 1
+grow_vertical = 1

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddjokis73m5js"]
+
+[ext_resource type="AudioStream" uid="uid://kp8pyw1de3l4" path="res://Assets/Sfx/stab_b_major(spring).mp3" id="1_q7g81"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_q7g81")

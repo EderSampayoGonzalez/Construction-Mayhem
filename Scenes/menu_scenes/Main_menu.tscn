@@ -1,0 +1,115 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqxqeyhb046m1"]
+
+[ext_resource type="FontFile" uid="uid://dx1nrb4vtur2w" path="res://Assets/Fonts/Pixellari.ttf" id="1_7sp8y"]
+[ext_resource type="Script" uid="uid://jkp800s4pdxi" path="res://Scripts/menu_scripts/main_menu.gd" id="1_pc006"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sp8y"]
+bg_color = Color(0.29219, 0.29219, 0.29219, 1)
+expand_margin_top = 5.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="InputEventKey" id="InputEventKey_wuhnb"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_pc006"]
+events = [SubResource("InputEventKey_wuhnb")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_hjasv"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_oynra"]
+events = [SubResource("InputEventKey_hjasv")]
+
+[node name="Main menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pc006")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -416.0
+offset_right = 416.0
+offset_bottom = 240.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("1_7sp8y")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "CONSTRUCTION
+MAYHEM"
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -231.0
+offset_top = -344.0
+offset_right = 232.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("1_7sp8y")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_7sp8y")
+shortcut = SubResource("Shortcut_pc006")
+text = "Jugar"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_7sp8y")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_7sp8y")
+text = "Opciones
+"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_7sp8y")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_7sp8y")
+shortcut = SubResource("Shortcut_oynra")
+text = "Salir"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(592, 694)
+amount = 100
+lifetime = 4.0
+preprocess = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(600, 1)
+gravity = Vector2(0, -100)
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

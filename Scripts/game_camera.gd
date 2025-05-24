@@ -41,9 +41,9 @@ func _process(delta):
 	r = r.grow_individual(margin.x, margin.y, margin.x, margin.y)
 	var z
 	if r.size.x > r.size.y * screen_size.aspect():
-		z = 1 / clamp(r.size.x / screen_size.x, max_zoom, min_zoom)
+		z = 1 / clampf(r.size.x / screen_size.x, max_zoom, min_zoom)
 	else:
-		z = 1 / clamp(r.size.y / screen_size.y, max_zoom, min_zoom)
+		z = 1 / clampf(r.size.y / screen_size.y, max_zoom, min_zoom)
 	zoom = lerp(zoom, Vector2.ONE * z, zoom_speed * delta)
 
 ## Añade a un jugador como objetivo de la camara
